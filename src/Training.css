@@ -1,0 +1,216 @@
+/* ===== Blog Layout ===== */
+.training-blog {
+  background: linear-gradient(180deg, #fafafa, #f5f5f5);
+  padding: 4rem 2rem;
+  min-height: 100vh;
+  font-family: 'Segoe UI', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle floating shapes in background */
+.training-blog::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  left: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 0, 50, 0.05);
+  border-radius: 50%;
+  animation: float 12s infinite linear;
+}
+.training-blog::after {
+  content: "";
+  position: absolute;
+  bottom: -60px;
+  right: -60px;
+  width: 250px;
+  height: 250px;
+  background: rgba(255, 0, 50, 0.08);
+  border-radius: 50%;
+  animation: float 15s infinite linear reverse;
+}
+
+@keyframes float {
+  0% { transform: translate(0,0); }
+  50% { transform: translate(20px, -20px); }
+  100% { transform: translate(0,0); }
+}
+
+/* ===== Container ===== */
+.blog-container {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== Title & Intro ===== */
+.blog-title {
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: crimson;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  animation: fadeDown 0.6s ease;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.05);
+}
+
+.blog-intro {
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  color: #555;
+  text-align: center;
+  margin-bottom: 3.5rem;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  animation: fadeUp 0.8s ease;
+}
+
+/* ===== Blog Posts ===== */
+.blog-post {
+  background: #fff;
+  padding: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-left: 6px solid crimson;
+  border-radius: 12px;
+  box-shadow: 0 12px 20px rgba(0,0,0,0.07);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-left 0.3s ease;
+  animation: fadeIn 0.8s ease;
+}
+
+.blog-post:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 35px rgba(0,0,0,0.12);
+  border-left: 6px solid #ff1f50;
+}
+
+/* ===== Post Image ===== */
+.blog-post img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.blog-post img:hover {
+  transform: scale(1.05) rotate(1deg);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.15);
+}
+
+/* ===== Post Headings ===== */
+.blog-post h2 {
+  font-size: clamp(1.5rem, 4vw, 1.9rem);
+  color: #111;
+  margin-bottom: 0.8rem;
+  font-weight: 800;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.blog-post h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 3px;
+  background: linear-gradient(90deg, crimson, #ff4b70);
+  margin-top: 8px;
+  border-radius: 3px;
+}
+
+/* ===== Meta Info ===== */
+.blog-meta {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.blog-meta span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.blog-meta .tag {
+  background: crimson;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+}
+
+.blog-meta .tag:hover {
+  background: #ff1f50;
+}
+
+/* ===== Post Content ===== */
+.blog-post p {
+  font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+  color: #444;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+/* Drop cap for first letter */
+.blog-post p:first-letter {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: crimson;
+  float: left;
+  margin-right: 8px;
+  line-height: 1;
+}
+
+/* Strong text highlight */
+.blog-post strong {
+  color: crimson;
+  font-weight: 600;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 992px) {
+  .blog-container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-post {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-post {
+    padding: 1.5rem;
+    border-left: 4px solid crimson;
+  }
+}

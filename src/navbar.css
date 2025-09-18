@@ -1,44 +1,174 @@
+/* ===== Global Reset ===== */
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 
+/* ===== Navbar Container ===== */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #000000;
-    width: 100%;
-    color: white;
-    box-shadow: 4px 2px 10px crimson;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, #000000, #1a1a1a);
+  width: 100%;
+  color: white;
+  box-shadow: 0 4px 20px rgba(220, 20, 60, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
+/* ===== Brand/Logo ===== */
 .navbar h1 {
-    color: crimson;
-    font-size: 2rem;
+  color: crimson;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .navbar h1 span {
-    color: #fff;
+  color: #fff;
 }
 
+/* ===== Nav Menu ===== */
 .navbar ul {
-    display: flex;
-    list-style-type: none;
-    gap: 2rem;
-    padding-right: 500px;
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.navbar ul li {
+  position: relative;
 }
 
 .navbar ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 1rem;
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
 }
 
 .navbar ul li a:hover {
-    /* color: crimson; */
-    border-bottom: 2px solid crimson;
+  color: crimson;
+}
+
+.navbar ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: crimson;
+  transition: width 0.3s ease;
+}
+
+.navbar ul li a:hover::after,
+.navbar ul li a.active::after {
+  width: 100%;
+}
+
+/* ===== Hamburger ===== */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 5px;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: crimson;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* ======================
+   Responsive Tweaks
+   ====================== */
+
+/* Tablets and larger phones (≤ 768px) */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 1rem 1.5rem;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: -100%;
+    background: #111;
+    width: 100%;
+    padding: 2rem 0;
+    gap: 1.5rem;
+    text-align: center;
+    transition: right 0.3s ease;
+  }
+
+  .navbar ul.active {
+    right: 0;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* Medium phones (≤ 600px) */
+@media (max-width: 600px) {
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar h1 {
+    font-size: 1.6rem;
+  }
+
+  .navbar ul {
+    gap: 1.2rem;
+    padding: 1.5rem 0;
+  }
+
+  .navbar ul li a {
+    font-size: 0.95rem;
+  }
+}
+
+/* Small phones (≤ 480px) */
+@media (max-width: 480px) {
+  .navbar h1 {
+    font-size: 1.4rem;
+  }
+
+  .navbar ul {
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .navbar ul li a {
+    font-size: 0.9rem;
+  }
+}
+
+/* Very small phones (≤ 320px) */
+@media (max-width: 320px) {
+  .navbar {
+    padding: 0.6rem;
+  }
+
+  .navbar h1 {
+    font-size: 1.2rem;
+  }
+
+  .navbar ul li a {
+    font-size: 0.85rem;
+  }
 }

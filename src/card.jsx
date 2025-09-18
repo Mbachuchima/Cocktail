@@ -1,29 +1,34 @@
-import React from 'react'
-import './card.css'
+// card.jsx
+import React from "react";
+import { Link } from "react-router-dom";
+import "./card.css";
 
-const Card = () => {
-    return (
-        <>
-            <div className='card'>
-                <div className='card-img'>
-                    <img src="src/assets/imgg.jpg" alt="cocktail" />
+const Card = ({ id, name, image, category, alcoholic, glass }) => {
+  return (
+    <div className="card">
+      <div className="card-img">
+        <img src={image} alt={name} />
+      </div>
 
-                </div>
-                <div className='card-content'>
-                    <h1>Smut</h1>
-                    <p>
-                        <span>Category:</span>
-                        Cocktail
-                    </p>
-                    <p>
-                        <span>Serving glass:</span>
-                        Cocktail glass
-                    </p>
-                    <button>More details</button>
-                </div>
-            </div>
-        </>
-    )
-}
+      <div className="card-content">
+        <h1>{name}</h1>
+        <p>
+          <span>Category:</span> {category}
+        </p>
+        <p>
+          <span>Alcoholic:</span> {alcoholic}
+        </p>
+        <p>
+          <span>Glass:</span> {glass}
+        </p>
 
-export default Card
+        {/* More Details Button */}
+        <Link to={`/cocktail/${id}`} className="more-details-btn">
+          More Details
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default Card;
